@@ -34,6 +34,20 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             build
 
+      - name: Ad-hoc sign app bundle
+        run: |
+          codesign \
+            --force \
+            --deep \
+            --sign - \
+            build/Build/Products/Release/NoNap.app
+          codesign \
+            --verify \
+            --deep \
+            --strict \
+            --verbose=2 \
+            build/Build/Products/Release/NoNap.app
+
       - name: Package DMG
         run: |
           mkdir -p dmg

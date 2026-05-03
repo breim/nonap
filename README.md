@@ -35,6 +35,8 @@ git push origin v1.0.0
 
 The release workflow attaches `NoNap-macOS.dmg` to the GitHub release. Open the DMG, then drag `NoNap.app` to `Applications`.
 
+The public build is ad-hoc signed so the app bundle is internally valid. It is not Developer ID notarized yet, so macOS may still require right-clicking the app and choosing Open the first time.
+
 ## Verify the power assertion
 
 Run this while the app is active:
