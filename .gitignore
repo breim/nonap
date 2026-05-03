@@ -1,0 +1,11 @@
+.DS_Store
+DerivedData/
+build/
+Caffeinated-macOS.zip
+Caffeinated-macOS.dmg
+NoNap-macOS.zip
+NoNap-macOS.dmg
+NoNap.iconset/
+NoNapIcon.tiff
+*.xcuserstate
+xcuserdata/
