@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		01A6E8B92C3F4A1500010001 /* NoNapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8B82C3F4A1500010001 /* NoNapApp.swift */; };
-		01A6E8BB2C3F4A1500010001 /* CaffeineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8BA2C3F4A1500010001 /* CaffeineManager.swift */; };
-		01A6E8BD2C3F4A1500010001 /* CaffeineDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8BC2C3F4A1500010001 /* CaffeineDuration.swift */; };
+		01A6E8BB2C3F4A1500010001 /* NoNapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8BA2C3F4A1500010001 /* NoNapManager.swift */; };
+		01A6E8BD2C3F4A1500010001 /* NoNapDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8BC2C3F4A1500010001 /* NoNapDuration.swift */; };
 		01A6E8BF2C3F4A1500010001 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A6E8BE2C3F4A1500010001 /* IOKit.framework */; };
 		01A6E8CB2C3F4A1500010001 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6E8CA2C3F4A1500010001 /* LoginItemManager.swift */; };
 		01A6E8CD2C3F4A1500010001 /* NoNap.icns in Resources */ = {isa = PBXBuildFile; fileRef = 01A6E8CC2C3F4A1500010001 /* NoNap.icns */; };
@@ -18,8 +18,8 @@
 /* Begin PBXFileReference section */
 		01A6E8B32C3F4A1500010001 /* NoNap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoNap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A6E8B82C3F4A1500010001 /* NoNapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNapApp.swift; sourceTree = "<group>"; };
-		01A6E8BA2C3F4A1500010001 /* CaffeineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineManager.swift; sourceTree = "<group>"; };
-		01A6E8BC2C3F4A1500010001 /* CaffeineDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineDuration.swift; sourceTree = "<group>"; };
+		01A6E8BA2C3F4A1500010001 /* NoNapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNapManager.swift; sourceTree = "<group>"; };
+		01A6E8BC2C3F4A1500010001 /* NoNapDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNapDuration.swift; sourceTree = "<group>"; };
 		01A6E8BE2C3F4A1500010001 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		01A6E8C02C3F4A1500010001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01A6E8CA2C3F4A1500010001 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
@@ -67,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				01A6E8B82C3F4A1500010001 /* NoNapApp.swift */,
-				01A6E8BA2C3F4A1500010001 /* CaffeineManager.swift */,
+				01A6E8BA2C3F4A1500010001 /* NoNapManager.swift */,
 				01A6E8CA2C3F4A1500010001 /* LoginItemManager.swift */,
-				01A6E8BC2C3F4A1500010001 /* CaffeineDuration.swift */,
+				01A6E8BC2C3F4A1500010001 /* NoNapDuration.swift */,
 				01A6E8CC2C3F4A1500010001 /* NoNap.icns */,
 				01A6E8C02C3F4A1500010001 /* Info.plist */,
 			);
@@ -146,9 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A6E8B92C3F4A1500010001 /* NoNapApp.swift in Sources */,
-				01A6E8BB2C3F4A1500010001 /* CaffeineManager.swift in Sources */,
+				01A6E8BB2C3F4A1500010001 /* NoNapManager.swift in Sources */,
 				01A6E8CB2C3F4A1500010001 /* LoginItemManager.swift in Sources */,
-				01A6E8BD2C3F4A1500010001 /* CaffeineDuration.swift in Sources */,
+				01A6E8BD2C3F4A1500010001 /* NoNapDuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

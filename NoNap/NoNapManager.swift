@@ -2,10 +2,10 @@ import AppKit
 import Foundation
 import IOKit.pwr_mgt
 
-final class CaffeineManager: ObservableObject {
+final class NoNapManager: ObservableObject {
     @Published private(set) var isActive = false
     @Published private(set) var remainingSeconds: Int?
-    @Published private(set) var selectedDuration: CaffeineDuration = .indefinite
+    @Published private(set) var selectedDuration: NoNapDuration = .indefinite
     @Published private(set) var keepsDisplayAwake = false
     @Published private(set) var lastError: String?
 
@@ -34,7 +34,7 @@ final class CaffeineManager: ObservableObject {
         stopTimer()
     }
 
-    func activate(duration: CaffeineDuration, keepDisplayAwake: Bool) {
+    func activate(duration: NoNapDuration, keepDisplayAwake: Bool) {
         if isActive {
             releaseAssertions()
             stopTimer()
@@ -127,7 +127,7 @@ final class CaffeineManager: ObservableObject {
         return true
     }
 
-    private func startTimer(for duration: CaffeineDuration) {
+    private func startTimer(for duration: NoNapDuration) {
         guard let seconds = duration.seconds else {
             expirationDate = nil
             remainingSeconds = nil

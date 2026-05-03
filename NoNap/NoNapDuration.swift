@@ -1,6 +1,6 @@
 import Foundation
 
-enum CaffeineDuration: String, CaseIterable, Identifiable {
+enum NoNapDuration: String, CaseIterable, Identifiable {
     case indefinite
     case fifteenMinutes
     case thirtyMinutes

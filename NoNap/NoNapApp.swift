@@ -3,7 +3,7 @@ import SwiftUI
 
 @main
 struct NoNapApp: App {
-    @StateObject private var manager = CaffeineManager()
+    @StateObject private var manager = NoNapManager()
     @StateObject private var loginItemManager = LoginItemManager()
 
     var body: some Scene {
@@ -17,13 +17,13 @@ struct NoNapApp: App {
 }
 
 private struct NoNapMenu: View {
-    @ObservedObject var manager: CaffeineManager
+    @ObservedObject var manager: NoNapManager
     @ObservedObject var loginItemManager: LoginItemManager
-    @AppStorage("selectedDuration") private var selectedDurationRawValue = CaffeineDuration.indefinite.rawValue
+    @AppStorage("selectedDuration") private var selectedDurationRawValue = NoNapDuration.indefinite.rawValue
     @AppStorage("keepDisplayAwake") private var keepDisplayAwake = false
 
-    private var selectedDuration: CaffeineDuration {
-        CaffeineDuration(rawValue: selectedDurationRawValue) ?? .indefinite
+    private var selectedDuration: NoNapDuration {
+        NoNapDuration(rawValue: selectedDurationRawValue) ?? .indefinite
     }
 
     var body: some View {
@@ -54,7 +54,7 @@ private struct NoNapMenu: View {
 
         Divider()
 
-        ForEach(CaffeineDuration.allCases) { duration in
+        ForEach(NoNapDuration.allCases) { duration in
             Button {
                 selectedDurationRawValue = duration.rawValue
 
