@@ -12,7 +12,7 @@ struct NoNapApp: App {
         } label: {
             Label("NoNap", systemImage: manager.isActive ? "cup.and.saucer.fill" : "cup.and.saucer")
         }
-        .menuBarExtraStyle(.menu)
+        .menuBarExtraStyle(.window)
     }
 }
 
@@ -27,67 +27,110 @@ private struct NoNapMenu: View {
     }
 
     var body: some View {
-        Button {
-            if manager.isActive {
-                manager.deactivate()
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 10) {
+                Image(systemName: manager.isActive ? "cup.and.saucer.fill" : "cup.and.saucer")
+                    .font(.title2)
+                    .foregroundStyle(manager.isActive ? .blue : .secondary)
+                    .frame(width: 28)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("NoNap")
+                        .font(.headline)
+                    Text(statusText)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Divider()
+
+            Toggle("Activate", isOn: activeBinding)
+                .toggleStyle(.switch)
+
+            Toggle("Keep Display On", isOn: keepDisplayAwakeBinding)
+                .toggleStyle(.switch)
+
+            Picker("Duration", selection: durationBinding) {
+                ForEach(NoNapDuration.allCases) { duration in
+                    Text(duration.title).tag(duration.rawValue)
+                }
+            }
+            .pickerStyle(.menu)
+
+            Divider()
+
+            Toggle("Open at Login", isOn: openAtLoginBinding)
+                .toggleStyle(.switch)
+
+            if let lastError = manager.lastError {
+                Text(lastError)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let lastError = loginItemManager.lastError {
+                Text(lastError)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Divider()
+
+            Button {
+                NSApplication.shared.terminate(nil)
+            } label: {
+                Label("Quit", systemImage: "power")
+            }
+            .buttonStyle(.borderless)
+        }
+        .padding(16)
+        .frame(width: 280)
+        .onAppear {
+            loginItemManager.refresh()
+        }
+    }
+
+    private var activeBinding: Binding<Bool> {
+        Binding {
+            manager.isActive
+        } set: { isActive in
+            if isActive {
+                manager.activate(duration: selectedDuration, keepDisplayAwake: keepDisplayAwake)
             } else {
+                manager.deactivate()
+            }
+        }
+    }
+
+    private var keepDisplayAwakeBinding: Binding<Bool> {
+        Binding {
+            keepDisplayAwake
+        } set: { isOn in
+            keepDisplayAwake = isOn
+            manager.setKeepDisplayAwake(isOn)
+        }
+    }
+
+    private var durationBinding: Binding<String> {
+        Binding {
+            selectedDurationRawValue
+        } set: { newValue in
+            selectedDurationRawValue = newValue
+
+            if manager.isActive {
                 manager.activate(duration: selectedDuration, keepDisplayAwake: keepDisplayAwake)
             }
-        } label: {
-            Label(manager.isActive ? "Deactivate" : "Activate", systemImage: manager.isActive ? "pause.circle" : "play.circle")
         }
+    }
 
-        Text(statusText)
-
-        if let lastError = manager.lastError {
-            Text(lastError)
-        }
-
-        Divider()
-
-        Button {
-            keepDisplayAwake.toggle()
-            manager.setKeepDisplayAwake(keepDisplayAwake)
-        } label: {
-            Label("Keep Display On", systemImage: keepDisplayAwake ? "checkmark.circle" : "circle")
-        }
-
-        Divider()
-
-        ForEach(NoNapDuration.allCases) { duration in
-            Button {
-                selectedDurationRawValue = duration.rawValue
-
-                if manager.isActive {
-                    manager.activate(duration: duration, keepDisplayAwake: keepDisplayAwake)
-                }
-            } label: {
-                if duration == selectedDuration {
-                    Label(duration.title, systemImage: "checkmark")
-                } else {
-                    Text(duration.title)
-                }
-            }
-        }
-
-        Divider()
-
-        Button {
-            loginItemManager.setEnabled(!loginItemManager.isEnabled)
-        } label: {
-            Label(loginItemManager.statusText, systemImage: loginItemManager.isEnabled ? "checkmark.circle" : "circle")
-        }
-
-        if let lastError = loginItemManager.lastError {
-            Text(lastError)
-        }
-
-        Divider()
-
-        Button {
-            NSApplication.shared.terminate(nil)
-        } label: {
-            Label("Quit", systemImage: "power")
+    private var openAtLoginBinding: Binding<Bool> {
+        Binding {
+            loginItemManager.isEnabled
+        } set: { isEnabled in
+            loginItemManager.setEnabled(isEnabled)
         }
     }
 
