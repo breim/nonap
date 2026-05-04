@@ -8,6 +8,10 @@
   A small macOS menu bar app that keeps your Mac awake when you need it.
 </p>
 
+<p align="center">
+  <a href="https://github.com/breim/nonap/releases"><strong>Download NoNap for macOS</strong></a>
+</p>
+
 NoNap prevents macOS from going to sleep due to inactivity with a simple menu bar toggle. It can run indefinitely or for a fixed duration, and it can optionally keep the display awake too.
 
 > [!NOTE]
