@@ -25,8 +25,8 @@ NoNap prevents macOS from going to sleep due to inactivity with a simple menu ba
 
 ## Requirements
 
-- macOS 14.0 or later.
-- Xcode with the macOS 14 SDK for local development.
+- macOS 14.0 or later to run the app.
+- Xcode is only required if you want to build the app from source.
 
 ## Installation
 
